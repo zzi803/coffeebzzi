@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web</title>
+  <link rel="stylesheet" href="style6.css">
+</head>
+
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+body{
+  background-color: #white;
+  overflow: hidden;
+}
+
+header{
+  margin-top: 80px;
+  width: 100%;
+  height: 120px;
+  /* line-height: 80px; */
+  width: 100vw;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: #4C2C69;
+}
+header img {
+    margin-left: auto;
+    margin-right: auto;
+    width:8%;
+}
+
+header a {
+  display: flex;
+  justify-content: center;
+}
+
+
+header span{
+    text-align: center;
+
+  font-size: 16px;
+  color: #4C2C69;
+}
+
+main{
+  height: calc(100vh - 120px);
+  width: 100vw;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* border: 1px solid red; */
+  position: relative;
+
+  display: flex;
+}
+
+section.principle{
+  width: 500px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+section.principle h2{
+  font-size: 80px;
+  font-weight: 500;
+  color: #CBCBCB;
+  line-height: 80px;
+}
+
+section.principle h3{
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 64px;
+  color: #4C2C69;
+}
+
+section.principle p{
+  font-size: 18px;
+  font-weight: 100;
+  color: #4D4D4D;
+  line-height: 150%;
+  margin-bottom: 72px;
+}
+
+figure{
+  padding-left: 48px;
+  margin-top: -50px;
+}
+
+figure.product-image{
+  flex: 1 1 0;
+  /* background-color: greenyellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+figure.product-image img{
+  width:60%;
+}
+figure.product-image figcaption{
+  font-size: 16px;
+  font-weight: 700;
+  color: #4C2C69;
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  right: 40px;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+div.arrows{
+  position: absolute;
+  /* background-color: red; */
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -50px;
+}
+
+</style>
+
+<body>
+  <header>
+    <a href="index.html"><img src="https://i.postimg.cc/J0XCj3cN/logo.png" alt="logo"></a>
+    <h1>The COFFEE BEAN</h1>
+    <h2>& Tea Leaf</h2>
+  </header>
+  <main>
+    <section class="principle">
+      <h2 class="number">1</h2>
+      <h3 class="summary">브라운 마끼아토네</h3>
+      <p class="detail">프리미엄 에스프레소와 달콤한 황설탕, 실크와 같은 밀크폼이 더해진 이탈리아식 에스프레소 음료.</p>
+    </section>
+
+    <figure class="product-image">
+      <img src="c1.jpg" alt="">
+      <figcaption>COFFEE BEAN</figcaption>
+    </figure>
+
+    <div class="arrows">
+      <img class="arrow-left" src="left.svg" alt="left arrow">
+      <img class="arrow-right" src="right.svg" alt="right arrow">
+    </div>
+  </main>
+  
+  <script>
+    const principles = [
+  {
+    summary: "브라운 마끼아토네", 
+    detail:"프리미엄 에스프레소와 달콤한 황설탕, 실크와 같은 밀크폼이 더해진 이탈리아식 에스프레소 음료.", 
+    name: "COFFEE BEAN"
+  },
+  {
+    summary: "바닐라빈 크림 콜드브루", 
+    detail:"스페셜티 콜드브루의 깔끔함과 프리미엄 바닐라빈 크림의 달콤함이 부드럽게 어우러진 음료.", 
+    name: "COFFEE BEAN"
+  },
+  {
+    summary: "스파클링 제주 레몬 스웨디시", 
+    detail:"상큼한 제주 레몬과 과일향 가득한 스웨디쉬 베리즈 티, 그리고 탄산수의 조화", 
+    name: "COFFEE BEAN"
+  },
+  {
+    summary: "고흥 유자 레몬 캐모마일 티", 
+    detail:"따뜻한 햇살과 남해의 해풍으로 자란 고흥 유자와 향긋한 레몬 캐모마일 티의 조화.", 
+    name: "COFFEE BEAN"
+  },
+]
+
+const numberTag = document.querySelector("section.principle h2.number")
+const summaryTag = document.querySelector("section.principle h3.summary")
+const detailTag = document.querySelector("section.principle p")
+
+const productImg = document.querySelector("figure.product-image img")
+const productName = document.querySelector("figure.product-image figcaption")
+
+const leftButton = document.querySelector("img.arrow-left")
+const rightButton = document.querySelector("img.arrow-right")
+
+
+let currentNumber = 1;
+
+leftButton.addEventListener("click", function(){
+  console.log(currentNumber);
+
+  currentNumber--;
+  if(currentNumber < 1){
+    currentNumber = 4;
+  }
+
+  numberTag.innerHTML = currentNumber;
+  // productImg.src = "product"+currentNumber+".jpg";
+  productImg.src = `c${currentNumber}.jpg`;
+
+  summaryTag.innerHTML = principles[currentNumber-1].summary;
+  detailTag.innerHTML = principles[currentNumber-1].detail;
+  productName.innerHTML = principles[currentNumber-1].name;
+
+})
+
+
+rightButton.addEventListener("click", function(){
+  console.log(currentNumber);
+
+  currentNumber++;
+  if(currentNumber > 4){
+    currentNumber = 1;
+  }
+
+  numberTag.innerHTML = currentNumber;
+  // productImg.src = "product"+currentNumber+".jpg";
+  productImg.src = `c${currentNumber}.jpg`;
+  
+  summaryTag.innerHTML = principles[currentNumber-1].summary;
+  detailTag.innerHTML = principles[currentNumber-1].detail;
+  productName.innerHTML = principles[currentNumber-1].name;
+})
+  </script>  
+
+</body>
+</html>

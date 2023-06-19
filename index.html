@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web_project 2</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+aside{
+    position: fixed;
+    width: 240px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px;
+    background-color: #fff;
+    transform: translateX(-300px);
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+aside.open{
+    transform: translateX(0);
+}
+
+aside a{
+  text-decoration: none;
+  color: #4C2C69;
+  margin-bottom: 24px;
+  display: inline-block;
+  width:100%;
+  text-align: left;
+}
+
+.wrap{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 100px 2fr 1fr;
+    grid-template-rows: 100px auto;
+
+    background-color: #4C2C69;
+    color: #fff;
+
+    /* margin-left: 300px; */
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+}
+
+.wrap.open{
+  margin-left: 300px;
+  width: calc(100vw - 300px);
+}
+
+.wrap > *{
+    /* border: 1px solid rgb(180, 180, 180, 0.5); */
+}
+nav{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 24px;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+nav a.logo{
+    text-decoration: none;
+    color: #fff;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+nav a.toggle-menu img{
+    width: 32px;
+    height: 32px;
+}
+
+.title{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;  
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-left: 32px;
+    font-weight: 500;
+}
+
+div.photos{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(255,255,255,0.3);
+
+}
+div.photos div.photo-wrap{
+    width: 30vw;
+    max-width: 450px;
+    height: 40vw;
+    max-height: 600px;
+
+    position: relative;
+    /* border:1px solid red; */
+}
+div.photos img{
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    margin-top: 80px;
+
+    box-shadow: 0 12px 12px rgba(0,0,0,0.1);
+
+    transition: all 0.2s ease;
+}
+div.info{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;   
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px;
+}
+
+div.info > *{
+    width:100%;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+div.info h2{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.name a {
+  color: white; /* 링크 텍스트의 색상 */
+}
+
+.name {
+  font-size: 40px;
+  color: #fff; /* 일반 텍스트의 색상 */
+  margin-top: -100px;
+  text-align: left;
+  text-transform: uppercase;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+
+</style>
+
+<body>
+    <aside>
+        <a href="index2.html">MENU1</a>
+        <a href="index2.html">MENU2</a>
+        <a href="index2.html">MENU3</a>
+        <a href="index2.html">MENU4</a>
+    </aside>
+    <div class="wrap">
+         <nav>
+            <a href="#" class="toggle-menu">
+               <img src="menu.svg"> 
+            </a>
+            <a href="#" class="logo">NEW MENUS</a>
+         </nav>
+         <h1 class="title">The Coffee Bean & Tea Leaf</h1>
+         <div class="photos">
+            <div class="photo-wrap">
+                <img src="c1.jpg">
+                <img src="c2.jpg">
+                <img src="c3.jpg">
+                <img src="c4.jpg">
+            </div>
+         </div>
+         <div class="info">
+            <a href="index2.html?page=1"><h2 class="name">Brown Macchiatone</h2></a>
+            <br>
+            <a href="index2.html?page=2"><h2 class="name">Vanilla Bean Cream Cold Brew</h2></a>
+            <br>
+            <a href="index2.html?page=3"><h2 class="name">Sparkling Jeju Lemon Swedish</h2></a>
+            <br>
+            <a href="index2.html?page=4"><h2 class="name">Goheung Yuzu Lemon Chamomile Tea</h2></a>
+        </div>
+
+    </div>
+    <script>
+        const menuTag = document.querySelector("nav a.toggle-menu")
+const asideTag = document.querySelector("aside")
+const wrapTag = document.querySelector("div.wrap")
+
+menuTag.addEventListener("click", function(){
+    asideTag.classList.toggle("open")
+    wrapTag.classList.toggle("open")
+    
+    if(asideTag.classList.contains("open")){
+        console.log("open")
+        menuTag.innerHTML = '<img src="close.svg">'
+    }else{
+        console.log("close")
+        menuTag.innerHTML = '<img src="menu.svg">'
+    }
+    
+})
+
+const photoWrap = document.querySelector("div.photo-wrap")
+const photos = document.querySelectorAll("div.photo-wrap img")
+
+photoWrap.addEventListener("mouseover", function(){
+    
+  // for(let i = 0 ; i < photos.length; i++){
+  //   let randomX = Math.random()*50; // 38.1121 / 48.9893
+  //   let randomY = Math.random()*50; 
+
+  //   photos[i].style.transform = `translate(${randomX}px, ${randomY}px)`; 
+  // }
+
+  photos.forEach(photo => {
+
+    // let randomX = Math.random()*50; // 38.1121 / 48.9893
+    let randomX = Math.round(Math.random()*4)*20 - 40; // 0, 20, 40, 60, 80// -40, -20, 0, 20, 40으로 변환
+    let randomY = Math.round(Math.random()*4)*20 - 40; // 0, 20, 40, 60, 80// -40, -20, 0, 20, 40으로 변환
+
+    photo.style.transform = `translate(${randomX}px, ${randomX}px) scale(0.8)`;
+  })
+
+})
+
+photoWrap.addEventListener("mouseout", function(){
+
+  photos.forEach(photo =>{
+    photo.style.transform = "translate(0, 0)";
+  })
+})
+
+
+let clickNum = 0
+
+photoWrap.addEventListener("click", function(){
+  clickNum++
+  console.log(clickNum)
+
+  photos[clickNum%photos.length].style.zIndex = clickNum  
+})
+
+
+// photoWrap.addEventListener("mouseover", function(){
+
+//   photos.forEach(photo=>{
+//     let ranX = Math.round((Math.random()*5))*40-100
+//     let ranY = Math.round((Math.random()*5))*40-100
+//     photo.style.transform = `translate(${ranX}px, ${ranY}px) scale(0.8)`
+//   })
+  
+// })
+
+// photoWrap.addEventListener("mouseout", function(){
+//   photos.forEach(photo=>{
+//     photo.style.transform = "translate(0px, 0px)"
+//   })
+  
+// })
+
+
+    </script>
+</body>
+</html>
